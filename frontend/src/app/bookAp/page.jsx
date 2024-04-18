@@ -4,44 +4,55 @@ import IndexNavbar from "@/components/Navbars/IndexNavbar";
 import ViewDoctors from "@/components/Table/ViewDoctors";
 import { useEffect, useState } from "react";
 export default function Fertilizer() {
-  const doctors = [
-    {
-      Doc_name: 'Doctor 1',
-      Doc_email: 'doctor1@example.com',
-      Doc_edu: 'MD',
-      Doc_spl: 'Cardiology',
-      Doc_exp: '10 years',
-      Doc_lang: 'English',
-    },
-    {
-      Doc_name: 'Doctor 1',
-      Doc_email: 'doctor1@example.com',
-      Doc_edu: 'MD',
-      Doc_spl: 'Cardiology',
-      Doc_exp: '10 years',
-      Doc_lang: 'English',
-    },
-    {
-      Doc_name: 'Doctor 1',
-      Doc_email: 'doctor1@example.com',
-      Doc_edu: 'MD',
-      Doc_spl: 'Cardiology',
-      Doc_exp: '10 years',
-      Doc_lang: 'English',
-    }
-    // Add more doctors as needed
-  ];
+  // const doctors = [
+  //   {
+  //     Doc_name: 'Doctor 1',
+  //     Doc_email: 'doctor1@example.com',
+  //     Doc_edu: 'MD',
+  //     Doc_spl: 'Cardiology',
+  //     Doc_exp: '10 years',
+  //     Doc_lang: 'English',
+  //   },
+  //   {
+  //     Doc_name: 'Manan mitesh joshi',
+  //     Doc_email: 'doctor1@example.com',
+  //     Doc_edu: 'MD',
+  //     Doc_spl: 'Cardiology',
+  //     Doc_exp: '6 years',
+  //     Doc_lang: 'English',
+  //   },
+  //   {
+  //     Doc_name: 'Doctor 1',
+  //     Doc_email: 'doctor1@example.com',
+  //     Doc_edu: 'MD',
+  //     Doc_spl: 'Cardiology',
+  //     Doc_exp: '3 years',
+  //     Doc_lang: 'English',
+  //   }
+  //   // Add more doctors as needed
+  // ];
+  const [doctors, setDoctors] = useState([]);
 
-  const [doctors1, setDoctors] = useState(null);
-  const handleClicked = async()=>{
-    try {
-      const res =await fetch("http://localhost:3000/api/auth/user");
-      const doctorss = await res.json();
-      setDoctors(doctorss);
-    } catch (error) {
-      console.error(error);
-    }
-  }
+  useEffect(() => {
+    const getDoctors = async () => {
+      try {
+        const res = await fetch("http://localhost:3000/api/auth/user");
+        const doctorss = await res.json();
+        console.log("helooooo jaanu",doctorss);
+        // Ensure that the fetched data is an array before setting it to state
+        if (Array.isArray(doctorss.users)) {
+          setDoctors(doctorss.users);
+        } else {
+          console.error("Fetched data is not an array");
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getDoctors();
+  }, []);
+
+
   
   return (
     <div title="Transportation Services">
@@ -72,7 +83,7 @@ export default function Fertilizer() {
               </div>
               
 
-    < ViewDoctors doctors={doctors}/>
+    < ViewDoctors doctors={doctors} />
             
             <div className="flex flex-wrap mt-44 justify-center bg-white">
             <div className="bg-white w-10/12 md:w-6/12 lg:w-6/12 px-22 md:px-8 mr-auto ml-auto -mt-32">

@@ -19,8 +19,8 @@ from werkzeug.utils import secure_filename
 app = Flask(__name__)
 CORS(app)
 
-# os.environ["GOOGLE_API_KEY"] = "AIzaSyAfItvxFBe_CzrjqOokhzkBEoHMpNyvOb8"
-# os.environ["OPENAI_API_KEY"] = "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"
+os.environ["GOOGLE_API_KEY"] = "AIzaSyAfItvxFBe_CzrjqOokhzkBEoHMpNyvOb8"
+os.environ["OPENAI_API_KEY"] = "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"
 
 def get_pdf_text(pdf_path):
     text = ""

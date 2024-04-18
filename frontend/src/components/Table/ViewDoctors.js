@@ -1,28 +1,36 @@
-const ViewDoctors = ({ doctors }) => {
+const ViewDoctors = ({ doctors}) => {
   const color = "dark";
+
+  const handleAppoint =()=>{
+    console.log("req sent")
+  }
   const tableData = doctors.map((doctor, index) => {
     return (
-
       <tr key={index}>
         <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
           <span className="ml-3 font-bold text-white">
-            {doctor.name? doctor.name:'Not found'}
+            {doctor.name}
           </span>
         </th>
         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-          {doctor.email? doctor.email: 'not found'}
+          {doctor.email}
         </td>
         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-          {doctor.degree? doctor.degree:'not found'}
+          {doctor.degree}
         </td>
         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
           <div className="flex">
-            {doctor.specialization? doctor.specialization:'not found'}
+            {doctor.specialization}
           </div>
         </td>
         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
           <span className="ml-3 font-bold text-white">
-            {doctor.experience?doctor.experience:'not found' }
+            4 years
+          </span>
+        </td>
+        <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+          <span className="ml-3 font-bold text-white">
+          <button type="button" onClick={handleAppoint} class="px-3 py-2 text-xs font-medium text-center text-white bg-red-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Click here</button>
           </span>
         </td>
       </tr>
@@ -58,6 +66,9 @@ const ViewDoctors = ({ doctors }) => {
               </th>
               <th className="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-700 text-white">
                 Experience
+              </th>
+              <th className="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-700 text-white">
+                Get an appointment
               </th>
               <th className="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-700 text-white" />
             </tr>
