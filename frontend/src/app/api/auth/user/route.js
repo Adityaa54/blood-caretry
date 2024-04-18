@@ -41,7 +41,7 @@ export const GET = async () => {
     try {
         await connectDB(); // Assuming connectDB establishes the database connection
         // Fetch all users from the database
-        const users = await User.find();
+        const users = await User.find({isDoctor:true});
 
         // Log fetched users
         console.log("Fetched users:", users);

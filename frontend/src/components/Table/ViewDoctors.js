@@ -6,29 +6,23 @@ const ViewDoctors = ({ doctors }) => {
       <tr key={index}>
         <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
           <span className="ml-3 font-bold text-white">
-
-            {doctor.Doc_name}
+            {doctor.name? doctor.name:'Not found'}
           </span>
         </th>
         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-          {doctor.Doc_email}
+          {doctor.email? doctor.email: 'not found'}
         </td>
         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-          {doctor.Doc_edu}
+          {doctor.degree? doctor.degree:'not found'}
         </td>
         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
           <div className="flex">
-            {doctor.Doc_spl}
+            {doctor.specialization? doctor.specialization:'not found'}
           </div>
         </td>
         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
           <span className="ml-3 font-bold text-white">
-            {doctor.Doc_exp}
-          </span>
-        </td>
-        <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-          <span className="ml-3 font-bold text-white">
-            {doctor.Doc_lang}
+            {doctor.experience?doctor.experience:'not found' }
           </span>
         </td>
       </tr>
@@ -64,9 +58,6 @@ const ViewDoctors = ({ doctors }) => {
               </th>
               <th className="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-700 text-white">
                 Experience
-              </th>
-              <th className="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-700 text-white">
-                Language
               </th>
               <th className="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blue-700 text-white" />
             </tr>

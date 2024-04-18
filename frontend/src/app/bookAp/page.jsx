@@ -1,37 +1,50 @@
 "use client"
-import React, { useState, useEffect } from "react";
-import { signIn, useSession, getSession } from "next-auth/react";
-// import Admin from "layouts/Admin.js";
-import Link from "next/link";
 import IndexNavbar from "@/components/Navbars/IndexNavbar";
 // import TransportForm from "@/components/TransportForm";
-
+import ViewDoctors from "@/components/Table/ViewDoctors";
+import { useEffect, useState } from "react";
 export default function Fertilizer() {
-  const { data: session, status } = useSession();
-  console.log(session);
-  const [loading, setLoading] = useState(true);
+  const doctors = [
+    {
+      Doc_name: 'Doctor 1',
+      Doc_email: 'doctor1@example.com',
+      Doc_edu: 'MD',
+      Doc_spl: 'Cardiology',
+      Doc_exp: '10 years',
+      Doc_lang: 'English',
+    },
+    {
+      Doc_name: 'Doctor 1',
+      Doc_email: 'doctor1@example.com',
+      Doc_edu: 'MD',
+      Doc_spl: 'Cardiology',
+      Doc_exp: '10 years',
+      Doc_lang: 'English',
+    },
+    {
+      Doc_name: 'Doctor 1',
+      Doc_email: 'doctor1@example.com',
+      Doc_edu: 'MD',
+      Doc_spl: 'Cardiology',
+      Doc_exp: '10 years',
+      Doc_lang: 'English',
+    }
+    // Add more doctors as needed
+  ];
 
-  useEffect(() => {
-    const securePage = () => {
-    //   if (status === "unauthenticated") {
-    //     signIn();
-    //   } 
-        setLoading(false);
-      
-    };
-    securePage();
-  });
-
-  if (loading) {
-    return <h2 style={{ marginTop: 100, textAlign: "center" }}>LOADING...</h2>;
+  const [doctors1, setDoctors] = useState(null);
+  const handleClicked = async()=>{
+    try {
+      const res =await fetch("http://localhost:3000/api/auth/user");
+      const doctorss = await res.json();
+      setDoctors(doctorss);
+    } catch (error) {
+      console.error(error);
+    }
   }
+  
   return (
-    <div
-      title="Transportation Services"
-
-      
-      
-    >
+    <div title="Transportation Services">
         <>
         <IndexNavbar fixed />
         <div className="w-full  px-20 mr-auto ml-auto mt-939 bg-white">
@@ -42,17 +55,7 @@ export default function Fertilizer() {
                     className="w-fit h-auto mx-auto rounded-t-lg "
                   />
                   <blockquote className=" bg-white relative p-8 mb-4 bg-blueGray-700">
-                    {/* <svg
-                      preserveAspectRatio="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 583 95"
-                      className="absolute left-0 w-full block h-95-px -top-94-px bg-blueGray-700"
-                    >
-                      <polygon
-                        points="-30,95 583,95 583,65"
-                        className="text-white bg-blueGray-700"
-                      ></polygon>
-                    </svg> */}
+      
                     <h4 className="text-xl font-bold text-white justify-center bg-blueGray-700">
                     Top-Notch Medical Appointment Facilities
                     </h4>
@@ -67,9 +70,10 @@ export default function Fertilizer() {
                   </blockquote>
                 </div>
               </div>
+              
 
-             
-         
+    < ViewDoctors doctors={doctors}/>
+            
             <div className="flex flex-wrap mt-44 justify-center bg-white">
             <div className="bg-white w-10/12 md:w-6/12 lg:w-6/12 px-22 md:px-8 mr-auto ml-auto -mt-32">
               <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-blueGray-700">
@@ -129,64 +133,6 @@ export default function Fertilizer() {
               </div>
             </div>
 
-            {/* <div className="w-10/12 md:w-6/12 lg:w-6/12 px-22 md:px-8 mr-auto ml-auto -mt-70">
-              <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-blueGray-700">
-                <img
-                  alt="..."
-                  src="https://t4.ftcdn.net/jpg/04/28/43/95/360_F_428439504_Z5egu36SdptMVY7i2lqT2bJW6tekdgI2.jpg?t=1631035550&width=600"
-                  className="w-full align-middle rounded-t-lg"
-                />
-                <blockquote className="relative p-8 mb-4">
-                  <svg
-                    preserveAspectRatio="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 583 95"
-                    className="absolute left-0 w-full block h-95-px -top-94-px"
-                  >
-                    <polygon
-                      points="-30,95 583,95 583,65"
-                      className="text-blueGray-700 fill-current"
-                    ></polygon>
-                  </svg>
-                  <h4 className="text-xl font-bold text-white">
-                  Truck transportation
-                  </h4>
-                  <p className="text-md font-light mt-2 text-white">
-                  This mode of transport is best for shipping goods over short to medium distances, and it is a flexible mode of transport that can accommodate a wide range of cargo types. It is often used for last-mile delivery or for transporting goods between warehouses and distribution centers.</p>
-                  
-                </blockquote>
-              </div>
-            </div> */}
-
-            {/* <div className="w-10/12 md:w-6/12 lg:w-6/12 px-22 md:px-8 mr-auto ml-auto -mt-70">
-              <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-blueGray-700">
-                <img
-                  alt="..."
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE3-J_g7lJv0zNeflpLXUuE2YaY3Dmhgoj97gP2rW97UowW7XyrgKEmlwuuJub80-euyE&usqp=CAU?t=1631035550&width=600"
-                  className="w-full align-middle rounded-t-lg"
-                />
-                <blockquote className="relative p-8 mb-2">
-                  <svg
-                    preserveAspectRatio="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 583 95"
-                    className="absolute left-0 w-full block h-95-px -top-94-px"
-                  >
-                    <polygon
-                      points="-30,95 583,95 583,65"
-                      className="text-blueGray-700 fill-current"
-                    ></polygon>
-                  </svg>
-                  <h4 className="text-xl font-bold text-white">
-                  Air-charter
-                  </h4>
-                  <p className="text-md font-light mt-2 text-white">
-                   transportation: This mode of transport involves hiring an entire aircraft to transport goods, and it is typically used for urgent or high-value shipments that need to be delivered quickly. It is more expensive than regular air transportation but can be faster and more flexible.</p>
-                  
-                </blockquote>
-              </div>
-            </div> */}
-
             <p className="text-lg font-dark leading-relaxed px-10 mt-4 mb-2 text-blueGray-800">
               Each mode of transport has its own advantages and disadvantages, 
               and the choice of mode will depend on factors such as the type of 
@@ -208,21 +154,9 @@ export default function Fertilizer() {
       </div>
 
       headerText=""
-
-      
         </>
     
     </div>
   );
 }
-// export async function getServerSideProps(context) {
-//   const session = await getSession(context);
-//   let userId = null;
 
-//   return {
-//     props: {
-//       session,
-//       userId,
-//     },
-//   };
-// }
