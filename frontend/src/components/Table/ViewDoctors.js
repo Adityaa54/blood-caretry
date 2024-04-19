@@ -1,8 +1,10 @@
+import { useData } from "../../../context/DataContext";
 const ViewDoctors = ({ doctors}) => {
+  console.log(doctors);
+  const { arrData, updateArrData, currUser } = useData();
   const color = "dark";
-
   const handleAppoint =()=>{
-    console.log("req sent")
+    console.log(currUser);
   }
   const tableData = doctors.map((doctor, index) => {
     return (

@@ -1,7 +1,7 @@
 // Assuming the path to connectDB is correct based on your project structure
 import { connectDB } from "@/helper/db"; 
 import { NextResponse } from "next/server";
-import BloodRequest from '@/models/bloodreq'; // Make sure this path matches your file structure
+import BloodRequest from '@/models/appointment'; // Make sure this path matches your file structure
 
 export const POST = async (req) => {
     await connectDB(); // Ensure DB connection

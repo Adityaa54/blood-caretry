@@ -2,33 +2,35 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // Define the BloodRequest schema
-const bloodRequestSchema = new Schema({
-    bloodType: {
+const AppointmentRequestSchema = new Schema({
+    name: {
         type: String,
         required: true,
-        enum: ['apos', 'aneg', 'bpos', 'bneg', 'abpos', 'abneg', 'opos', 'oneg'] // Ensures the blood type is one of these values
     },
-    quantity: {
-        type: Number,
+    email: {
+        type: String,
         required: true
+    },
+    phone:{
+        type:Number,
+        required:true
     },
     address: {
         type: String,
         required: true
     },
-    urgent: {
+    concern: {
         type: String,
         required: true
     },
-    hospitalName: {
-        type: String,
-        
-    },
     reason: {
         type: String,
-        
     },
-    userId: {
+    patientId: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true
+    },
+    doctorId: {
         type: mongoose.Schema.Types.ObjectId,
         required: true
     },
@@ -39,6 +41,6 @@ const bloodRequestSchema = new Schema({
 });
 
 // Compile model from schema
-const BloodRequest = mongoose.models.bloodrequest || mongoose.model('bloodrequest', bloodRequestSchema);
+const AppointmentRequest = mongoose.models.appointment || mongoose.model('appointment', AppointmentRequestSchema);
 
-module.exports = BloodRequest;
+module.exports = AppointmentRequest;
